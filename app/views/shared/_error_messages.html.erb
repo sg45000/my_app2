@@ -1,0 +1,16 @@
+<% if @user.errors %>
+<div id="error_explanation">
+
+  <div class="alert">
+    <ul>
+    <% @user.errors.full_messages.each do |error|%>
+        <li>
+          <%= error %>
+        </li>
+    <% end %>
+    </ul>
+  </div>
+  
+  </div>
+<% end %>
+
