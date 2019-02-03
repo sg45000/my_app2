@@ -7,6 +7,7 @@
   box-sizing:          border-box;
 }
 
+
 // application
 h1{
     text-align:center;
@@ -32,4 +33,36 @@ input ,textarea{
   .form-control{
     color:$state-danger-text;
   }
+}
+
+body{
+  padding-top:60px;
+}
+
+//header
+
+//home
+#home_page{
+  .home_top{
+    background-image:url("/images/janis1.jpg");
+    height: 600px;
+    background-size: cover;
+    color:white;
+    
+    
+    h1{
+      font-size:60px;
+      letter-spacing:5px;
+      padding-top:350px;
+    }
+    .home_nav{
+      letter-spacing:2px;
+      font-size:20px;
+      text-align:center;
+      margin-top:5px;
+    }
+    
+  }
+  
+  
 }
