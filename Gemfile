@@ -5,6 +5,8 @@ ruby '2.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
+
+gem 'webpacker', github: 'rails/webpacker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'faker'
