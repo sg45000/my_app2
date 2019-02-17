@@ -1,16 +1,15 @@
-<% if @user.errors %>
+<% obj = @video||@user%>
+<% if obj.errors %>
 <div id="error_explanation">
-
   <div class="alert">
     <ul>
-    <% @user.errors.full_messages.each do |error|%>
+    <% obj.errors.full_messages.each do |error|%>
         <li>
           <%= error %>
         </li>
     <% end %>
     </ul>
   </div>
-  
-  </div>
+</div>
 <% end %>
 

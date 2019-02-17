@@ -1,4 +1,17 @@
-<%= @user.name %>
-<%= @user.email %>
+<div class="raw">
+  <div class="col-md-3 user_info affix">
+    <p><%= @user.name %></p>
+    <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
+  </div>
+    <% @videos.each do |video| %>
+    <div class="col-md-6 col-md-offset-3">
+      <h2><%= video.name%></h2>
+      <iframe width="280" height="160" src="https://www.youtube.com/embed/<%=video.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <%= video.discription%>
+    </div>
+    <div "col-md-3"></div>
+    <% end %>
+    <%= will_paginate @videos %>
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/5wL8SVdqhGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
