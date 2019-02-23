@@ -4,6 +4,7 @@ class Video < ApplicationRecord
     validates :name, presence: true, length:{maximum: 20}
     validates :url, presence: true
     validates :discription, length:{maximum: 255}
+    has_and_belongs_to_many :genres
    
     
     def embed_url
