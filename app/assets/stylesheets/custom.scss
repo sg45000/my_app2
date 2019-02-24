@@ -41,6 +41,13 @@ body{
 
 //header
 
+header{
+  li{
+    margin:0;
+    padding:1;
+  }
+}
+
 //home
 #home_page{
   .home_top{
@@ -72,6 +79,7 @@ body{
 }
 
 .videos{
+  border-right:ridge thin #CCC;
   span{ font-weight:bold;
   }
 }

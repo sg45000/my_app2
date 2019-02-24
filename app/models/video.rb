@@ -10,7 +10,11 @@ class Video < ApplicationRecord
     def embed_url
         url = self.url.match(URL_REGEX)
         if !url.nil?
-            self.url =url[1]
+            "https://www.youtube.com/embed/"+url[1]
         end
+    end
+    
+    def youtube_url
+        self.url="https://www.youtube.com/watch?v="+self.url
     end
 end
