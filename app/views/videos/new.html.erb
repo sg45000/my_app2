@@ -9,17 +9,11 @@
       <%= f.text_field :url, class: 'form-control' %>
       <%= f.label :discription%>
       <%= f.text_area :discription, class: 'form-control'%>
-      
-      <%= fields_for @video.genres do |fl|%>
-        <% @genres.each do |genre|%>
-          <%= f.label "#{genre.name}"%>
-          <%= f.check_box :genres,{multiple: true},checked_value = genre.id,nil%>
-        <% end %>
+      <% @genres.each do |genre|%>
+        <%= f.label "#{genre.name}"%>
+        <%= f.check_box :genres,{multiple: true},checked_value = genre.id,nil%>
       <% end %>
-      
-      
       <%= f.submit class: 'btn btn-primary'%>
-      
     <% end %>
   </div>
 </div>

@@ -1,21 +1,25 @@
 <div class="raw">
-  <div class="col-md-3 user_info affix">
-    <p><%= @user.name %></p>
-    <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
-  </div>
+    <div class="col-md-12 user_info">
+      <p><%= @user.name %></p>
+      <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
+       <%= will_paginate @videos %>
+    </div>
     <% @videos.each do |video| %>
-    <div class="col-md-6 col-md-offset-3">
-      <h2><%= video.name%></h2>
-      <iframe width="280" height="160" src="https://www.youtube.com/embed/<%=video.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <%= video.discription%>
-    </div>
-    <div "col-md-3">
-      <% video.genres.each do |genre|%>
-        <%= genre.name %>
-      <% end %>
-    </div>
+      <h2 class="col-md-9 col-md-offset-3"><%=video.name%></h2>
+      <div class="col-md-4 col-md-offset-3 videos">
+        <iframe width="280" height="160" src="https://www.youtube.com/embed/<%=video.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>
+        <span>Tags:</span>
+        <% video.genres.each do |genre|%>
+          <span class="btn btn-primary btn-xs"><%= genre.name %></span>
+        <% end %>
+        </p>
+        </div>
+        <div class="col-md-5 desc"><%= video.discription%></div>
+      
+      
     <% end %>
-    <%= will_paginate @videos %>
-
+    
+   
 </div>
 
