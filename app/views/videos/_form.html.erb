@@ -13,6 +13,7 @@
         <%= f.check_box :genres,{multiple: true,checked: checked?(@video,genre)},genre.id,nil%>
       <% end %>
       <%= f.submit class: 'btn btn-primary'%>
+      <%= link_to "Link to Youtube" , "https://www.youtube.com/?gl=JP&hl=ja",target: "_blank", class: 'btn btn-primary'%>
     <% end %>
   </div>
 </div>

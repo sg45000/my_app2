@@ -1,0 +1,11 @@
+<div class="row">
+  <div>
+    <div class="genre_list">
+      <%=link_to("All",videos_path,class: "btn btn-info")%>
+      <% @genres.each do |genre|%>
+          <%=link_to("#{genre.name}",videos_path(genre_id: genre.id),class: "btn btn-info")%>
+      <% end %>
+    </div>
+    <%= render 'shared/video_index' %>
+  </div>
+</div>

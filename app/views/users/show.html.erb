@@ -1,23 +1,14 @@
-<div class="raw">
+<div class="row">
     <div class="col-md-12 user_info">
       <p><%= @user.name %></p>
       <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
       <p><%=link_to("Settings", edit_user_path(@user),class: "btn btn-info")%></p>
-       <%= will_paginate @videos %>
     </div>
-    <% @videos.each do |video| %>
-      <h2 class="col-md-9 col-md-offset-3"><%=video.name%></h2>
-      <div class="col-md-4 col-md-offset-3 videos">
-        <iframe width="280" height="160" src="<%=video.embed_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <span><%=link_to("Update",edit_video_path(video),class:"btn btn-primary")%></span>
-        <span><%=link_to("Link","#{video.url}",class:"btn btn-primary",target: "_blank")%></span>
-        <p>
-        <span>Tags:</span>
-        <% video.genres.each do |genre|%>
-          <span class="btn btn-primary btn-xs"><%= genre.name %></span>
-        <% end %>
-        </p>
-      </div>
-      <div class="col-md-5 desc"><%= video.discription%></div>
-    <% end %>
+    <div class="genre_list">
+      <%=link_to("All",user_path,class: "btn btn-info")%>
+      <% @genres.each do |genre|%>
+          <%=link_to("#{genre.name}",user_path(genre_id: genre.id),class: "btn btn-info")%>
+      <% end %>
+    </div>
+    <%= render 'shared/video_index'%>
 </div>

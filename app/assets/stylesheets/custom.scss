@@ -71,6 +71,8 @@ header{
   }
 }
 
+//user_show
+
 .user_info{
   p{
     margin-top:20px;
@@ -78,8 +80,18 @@ header{
   }
 }
 
+//_video_index
+
 .videos{
-  border-right:ridge thin #CCC;
   span{ font-weight:bold;
   }
+}
+
+.video_link{
+  a{
+    margin-bottom:10px;
+  }
+}
+.desc{
+    border-left:ridge thin #CCC;
 }

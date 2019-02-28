@@ -3,14 +3,15 @@
     <ul class="nav navbar-nav navbar-left">
       <li><%= link_to(image_tag('home_icon.png', size: "64x32"), root_path,class: "navbar-brand") %></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li "col-sm-4 col-xs-6"><%= link_to("About", about_path)%></li>
+    <ul class="nav navbar-nav navber-right">
+        <li class="col-sm-3 col-xs-6"><%= link_to("About", about_path)%></li>
       <%if logged_in? %>
-        <li class="col-sm-4 col-xs-6"><%=link_to("your videos",current_user)%></li>
-        <li class="col-sm-4 col-xs-6"><%=link_to("Sign out",logout_path,method: :delete)%></li>
+        <li class="col-sm-3 col-xs-6"><%=link_to("All videos", videos_path)%></li>
+        <li class="col-sm-3 col-xs-6"><%=link_to("Your videos",current_user)%></li>
+        <li class="col-sm-3 col-xs-6"><%=link_to("Sign out",logout_path,method: :delete)%></li>
       <%else%>
-        <li class="col-sm-4 col-xs-6"><%= link_to("Create Account",signup_path)%></li>
-        <li class="col-sm-4 col-xs-6"><%= link_to("Sign in",login_path)%></li>
+        <li class="col-sm-3 col-xs-6"><%= link_to("Create Account",signup_path)%></li>
+        <li class="col-sm-3 col-xs-6"><%= link_to("Sign in",login_path)%></li>
       <% end %>
     </ul>
       

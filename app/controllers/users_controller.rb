@@ -3,7 +3,14 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @videos = Video.where(user_id: @user.id).paginate(page: params[:page],per_page: 5)
+    @genres = Genre.all
+    if params[:genre_id]
+      videos=Video.includes(:genres).where(genres_videos:{genre_id: params[:genre_id]})
+      .references(:genres).paginate(page: params[:page],per_page: 5)
+      @videos=videos.where(user_id: @user.id)
+    else
+      @videos = Video.where(user_id: @user.id).paginate(page: params[:page],per_page: 5)
+    end
   end
   
   def new

@@ -1,4 +1,15 @@
 class VideosController < ApplicationController
+  before_action :video_owner? , only:[:edit,:update]
+  
+  def index
+    @genres = Genre.all
+    if params[:genre_id]
+      @videos=Video.includes(:genres).where(genres_videos:{genre_id: params[:genre_id]})
+      .references(:genres).paginate(page: params[:page],per_page: 5)
+    else
+      @videos = Video.all.paginate(page: params[:page],per_page: 5)
+    end
+  end
   
   def new
     @video=Video.new
@@ -47,6 +58,19 @@ class VideosController < ApplicationController
   #genres[]はgenre.idのArray
   def genre_params
     params.require(:video).permit(genres:[])
+  end
+  
+  def video_owner?
+    video=Video.find_by(id: params[:id])
+    if !video
+      flash[:danger] = "This video has been removed."
+      redirect_to root_url
+    elsif video.user_id!=session[:user_id]
+      flash[:danger] = "Please log in correct account before access this page."
+      redirect_to login_url
+    else
+      
+    end
   end
   
 end
