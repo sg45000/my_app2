@@ -8,6 +8,10 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control'%>
       <%= f.submit yield(:button_text), class: 'btn btn-submit'%>
+      <%= f.label :remenber_me,class: "checkbox inline" do%>
+        <%= f.check_box :remenber_me,{},true,false%>
+        <span>Remenber me on this conputer. </span>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -22,7 +22,8 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "こんにちは！#{@user.name}さん"
       log_in @user
-      redirect_to user_url(@user)
+      
+      redirect_to @user
     else
       render 'new'
       

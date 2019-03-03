@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
+      params[:session][:remenber_me] ? remenber(@user) : forget(@user) 
       flash[:success] = "you got logged in !"
       redirect_to @user
     else
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    logout
+    logout if logged_in?
     redirect_to root_url
   end
   
