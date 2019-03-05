@@ -8,5 +8,13 @@
 require 'csv'
 
 CSV.foreach('db/genre.csv')do |row|
-    Genre.create(name: row[0])
+    Genre.create!(name: row[0])
+end
+
+CSV.foreach('db/user.csv')do |row|
+    User.create!(name: row[0],email: row[1],password: row[2],password_confirmation: row[3])
+end
+
+CSV.foreach('db/video.csv')do |row|
+    Video.create!(user_id: row[0],name: row[1],url: row[2])
 end

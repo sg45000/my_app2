@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :logged_in_user? ,only:[:show,:edit,:update]
+  before_action :correct_user, only:[:edit,:update]
   
   def show
     @user = User.find(params[:id])
+    @chart = genre_chart(@user)
     @genres = Genre.all
     if params[:genre_id]
       videos=Video.includes(:genres).where(genres_videos:{genre_id: params[:genre_id]})
@@ -54,8 +56,27 @@ class UsersController < ApplicationController
     end
   end
   
+  def correct_user
+    @user=User.find(params[:id])
+    redirect_to root_url unless current_user?(@user)
+  end
+  
   def user_params
     params.require(:user).permit(:name,:email,:password,:password_confirmation)
   end
   
+  def genre_chart(user)
+    videos=Video.where(user_id: user.id)
+    data={}
+    videos.each do |video|
+      video.genres.each do |genre|
+        if data.include?(:"#{genre.name}")
+          data[:"#{genre.name}"]+=1
+        else
+          data[:"#{genre.name}"]=1
+        end
+      end
+    end
+    return data
+  end
 end

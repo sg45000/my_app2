@@ -13,6 +13,7 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'bcrypt'
 gem "bootstrap-sass"
+gem 'chartkick'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

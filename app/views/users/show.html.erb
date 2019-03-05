@@ -3,6 +3,7 @@
       <p><%= @user.name %></p>
       <p><%= link_to("New Videos", new_video_path,class: "btn btn-info")%></p>
       <p><%=link_to("Settings", edit_user_path(@user),class: "btn btn-info")%></p>
+      <%= pie_chart(@chart)%>
     </div>
     <div class="genre_list">
       <%=link_to("All",user_path,class: "btn btn-info")%>
