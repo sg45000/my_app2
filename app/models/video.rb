@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-    URL_REGEX = /\Ahttps:\/\/www\.youtube\.com\/watch\?v=([\w]+)\z/i
+    URL_REGEX = /\Ahttps:\/\/www\.youtube\.com\/watch\?v=([\w-]+)\z/i
     validates :user_id, presence: true
     validates :name, presence: true, length:{maximum: 20}
     validates :url, presence: true

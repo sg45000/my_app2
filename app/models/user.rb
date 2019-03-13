@@ -1,5 +1,15 @@
 class User < ApplicationRecord
     has_many :videos
+    has_many :active_relationships, class_name:  "UserRelation",
+                                foreign_key: "follower_id",
+                                dependent: :delete_all
+    has_many :passive_relationships, class_name: "UserRelation",
+                                foreign_key: "followed_id",
+                                dependent: :delete_all
+    has_many :following, through: :active_relationships, source: :followed
+    #followingを単数形で外部キ-で探してしまうため、sourceをfollowed指定する
+    has_many :followers, through: :passive_relationships, source: :follower
+    #followersの単数形はfollowerなのでsourceは明示する必要はない
     validates :name , presence: true, length: {maximum: 20}
     EMAIL_REGEX = /\A[\w\-.]+@[a-z\d\-]+\.[a-z]+\z/i
     validates :email, presence: true, format: {with: EMAIL_REGEX}, uniqueness: true
@@ -20,6 +30,18 @@ class User < ApplicationRecord
         return false if remenber_digest.nil?  
         BCrypt::Password.new(remenber_digest) == remenber_token
 
+    end
+    
+    def follow(other_user)
+        following << other_user
+    end
+    
+    def unfollow(other_user)
+        active_relationships.find_by(followed_id: other_user.id).destroy
+    end
+    
+    def followed?(other_user)
+        following.include?(other_user)
     end
     
     class << self

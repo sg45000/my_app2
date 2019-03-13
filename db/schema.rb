@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_055054) do
+ActiveRecord::Schema.define(version: 2019_03_05_142421) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -18,11 +18,24 @@ ActiveRecord::Schema.define(version: 2019_03_03_055054) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres_videos", id: false, force: :cascade do |t|
+  create_table "genres_videos", force: :cascade do |t|
     t.integer "video_id"
     t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id", "video_id"], name: "index_genres_videos_on_genre_id_and_video_id", unique: true
     t.index ["genre_id"], name: "index_genres_videos_on_genre_id"
     t.index ["video_id"], name: "index_genres_videos_on_video_id"
+  end
+
+  create_table "user_relations", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id", "follower_id"], name: "index_user_relations_on_followed_id_and_follower_id", unique: true
+    t.index ["followed_id"], name: "index_user_relations_on_followed_id"
+    t.index ["follower_id"], name: "index_user_relations_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
