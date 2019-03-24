@@ -12,7 +12,7 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'jquery-rails'
 gem 'bcrypt'
-gem "bootstrap-sass"
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'chartkick'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
