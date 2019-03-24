@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 2019_03_05_142421) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres_videos", force: :cascade do |t|
+  create_table "genres_videos", id: false, force: :cascade do |t|
     t.integer "video_id"
     t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["genre_id", "video_id"], name: "index_genres_videos_on_genre_id_and_video_id", unique: true
     t.index ["genre_id"], name: "index_genres_videos_on_genre_id"
     t.index ["video_id"], name: "index_genres_videos_on_video_id"
